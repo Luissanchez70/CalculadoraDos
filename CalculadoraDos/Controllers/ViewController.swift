@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+ 
 
     @IBOutlet weak var contenedor: UIStackView!
     @IBOutlet weak var label: UILabel!
@@ -21,7 +23,6 @@ class ViewController: UIViewController {
     
     private func loadPantalla(){
         
-        view.backgroundColor = .black
         label.textColor = .white
         contenedor.spacing = 10
         cargarButtons()
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
                 count = 1
             }
             
-            let button: UIButton = GeneradorComponentes.makeButton(tag)
+            let button: UIButton = CustomButton()
             button.addTarget(self, action: #selector(evento), for: .touchUpInside)
             row.addArrangedSubview(button)
             count += 1
