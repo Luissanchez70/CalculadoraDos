@@ -7,18 +7,18 @@
 
 import UIKit
 
-final class CustomStackView : UIStackView {
-    
+final class CustomStackView: UIStackView {
     init() {
         super.init(frame: .zero)
+        configure()
+    }
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        configure()
+    }
+    private func configure() {
         self.axis = .horizontal
         self.distribution = .fillEqually
         self.spacing = 10
-    
     }
-    
-    required init(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
 }

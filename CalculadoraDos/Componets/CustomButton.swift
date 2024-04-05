@@ -8,21 +8,17 @@
 import UIKit
 
 final class CustomButton: UIButton {
-    
-    public var digitType: Digitos?
-    
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        custom()
+        configure()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        configure()
     }
-    
-    
-    private func custom() {
-        
+
+    private func configure() {
         self.setTitleColor(.white, for: .normal)
         self.backgroundColor = .lightGray
         self.widthAnchor.constraint(equalToConstant: 80).isActive = true

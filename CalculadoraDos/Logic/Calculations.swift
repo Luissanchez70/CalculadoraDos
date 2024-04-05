@@ -8,54 +8,39 @@
 import Foundation
 
 final class Calculations {
-    
-    let orderOfOperations = [Digitos.division, Digitos.multiplication, Digitos.subtraction, Digitos.addition]
-    
-    
+    let orderOfOperations = [Digitos.div, Digitos.mul, Digitos.minus, Digitos.plus]
     func getOperations(_ arrOperation: [String]) -> Double {
-        
         var arrOperation = arrOperation
         for operation in orderOfOperations {
-            
-            for i in stride(from: 1, to: arrOperation.count, by: 2) {
-                
-                let operatorStr: String = " \(arrOperation[i]) "
-                
-                if operatorStr.contains(operation.tag()) {
-                                        
-                    let num1: Double = Double(arrOperation[i-1])!
-                    let num2: Double = Double(arrOperation[i+1])!
+            for pos in stride(from: 1, to: arrOperation.count, by: 2) {
+                let operatorStr: String = " \(arrOperation[pos]) "
+                if  let num1: Double = Double(arrOperation[pos-1]),
+                    let num2: Double = Double(arrOperation[pos+1]),
+                    operatorStr.contains(operation.tag()) {
                     let restultado = calculate(operatorStr, num1, num2)
-             
-                    arrOperation[i] = " "
-                    arrOperation[i-1] = " "
-                    arrOperation[i+1] = "\(restultado)"
+                    arrOperation[pos] = " "
+                    arrOperation[pos-1] = " "
+                    arrOperation[pos+1] = "\(restultado)"
                 }
             }
-            
-            arrOperation = arrOperation.filter{ !$0.contains(" ")}
+            arrOperation = arrOperation.filter { !$0.contains(" ") }
         }
-        
         return Double(arrOperation[0]) ?? 0
     }
-    
     private func calculate(_ sing: String, _ num1: Double, _ num2: Double) -> Double {
-        
         var result: Double
-        
         switch sing {
-        case Digitos.division.tag():
+        case Digitos.div.tag():
             result = num1 / num2
-        case Digitos.multiplication.tag():
+        case Digitos.mul.tag():
             result = num1 * num2
-        case Digitos.subtraction.tag():
+        case Digitos.minus.tag():
             result = num1 - num2
-        case Digitos.addition.tag():
+        case Digitos.plus.tag():
             result = num1 + num2
         default:
             result = 0.0
         }
-     
         return result
     }
 }
