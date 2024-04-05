@@ -103,6 +103,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="0" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="Zbe-Pd-FMt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeD-ly-AsW">
                                                 <rect key="frame" x="90" y="0.0" width="80" height="80"/>
@@ -115,6 +118,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="1" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="qvo-rR-u9g"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTs-DH-IV3">
                                                 <rect key="frame" x="180" y="0.0" width="80" height="80"/>
@@ -127,6 +133,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="2" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="rzx-H3-xW7"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUJ-u7-lfY">
                                                 <rect key="frame" x="270" y="0.0" width="80" height="80"/>
@@ -139,6 +148,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title=" / " cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="5Un-xc-LVV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -155,6 +167,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="3" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="Pip-yx-KU5"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1I-BV-ZEs">
                                                 <rect key="frame" x="90" y="0.0" width="80" height="80"/>
@@ -167,6 +182,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="4" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="cDX-ZK-QHw"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGA-lS-cuO">
                                                 <rect key="frame" x="180" y="0.0" width="80" height="80"/>
@@ -179,6 +197,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="5" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="ueF-at-U14"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="603-aO-RQC">
                                                 <rect key="frame" x="270" y="0.0" width="80" height="80"/>
@@ -191,6 +212,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title=" * " cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="e9H-vN-b1s"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -208,6 +232,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="6" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="h4M-NW-GEp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjs-m1-c5K">
                                                 <rect key="frame" x="90" y="0.0" width="80" height="80"/>
@@ -220,6 +247,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="7" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="EU2-R2-SPL"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmo-hG-Sbv">
                                                 <rect key="frame" x="180" y="0.0" width="80" height="80"/>
@@ -232,6 +262,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="8" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="362-KS-0cy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8N-lC-oGa">
                                                 <rect key="frame" x="270" y="0.0" width="80" height="80"/>
@@ -244,6 +277,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title=" - " cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="h9K-lE-7Zi"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -261,6 +297,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="9" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="hsg-1n-SzF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltw-GS-yZs">
                                                 <rect key="frame" x="90" y="0.0" width="80" height="80"/>
@@ -273,6 +312,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="." cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="vUz-zT-W70"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZx-Oz-CpS">
                                                 <rect key="frame" x="180" y="0.0" width="80" height="80"/>
@@ -285,6 +327,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title=" + " cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="GvC-lQ-co1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dX-qf-YZ2">
                                                 <rect key="frame" x="270" y="0.0" width="80" height="80"/>
@@ -297,6 +342,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="AC" cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="CjJ-F2-hSt"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -315,6 +363,9 @@
                                                 <buttonConfiguration key="configuration" style="gray" title=" = " cornerStyle="capsule">
                                                     <color key="baseBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onClick:" destination="8bC-wk-pkI" eventType="touchUpInside" id="uW7-52-kIc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -342,24 +393,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="StV-ab-uWx"/>
                     <connections>
-                        <outlet property="addition" destination="NZx-Oz-CpS" id="Bb2-2q-Isc"/>
-                        <outlet property="delete" destination="9dX-qf-YZ2" id="ruF-pK-2RQ"/>
-                        <outlet property="division" destination="xUJ-u7-lfY" id="tRc-Dw-GcD"/>
-                        <outlet property="equals" destination="f23-sd-3Fp" id="ToD-dC-E9a"/>
                         <outlet property="label" destination="hua-Pe-rQm" id="ZwZ-uv-PRD"/>
-                        <outlet property="multiplication" destination="603-aO-RQC" id="gWn-bt-bHh"/>
-                        <outlet property="num0" destination="rx5-RZ-J9W" id="efg-T2-jfk"/>
-                        <outlet property="num1" destination="CeD-ly-AsW" id="Oxh-zg-cCu"/>
-                        <outlet property="num2" destination="uTs-DH-IV3" id="iCT-LD-D5i"/>
-                        <outlet property="num3" destination="ncX-98-gb2" id="YXC-dG-4ne"/>
-                        <outlet property="num4" destination="o1I-BV-ZEs" id="rvV-ki-UsC"/>
-                        <outlet property="num5" destination="WGA-lS-cuO" id="HBR-mj-2p3"/>
-                        <outlet property="num6" destination="gwq-Pa-HW3" id="0ua-xN-UeB"/>
-                        <outlet property="num7" destination="Rjs-m1-c5K" id="zlq-Jb-vId"/>
-                        <outlet property="num8" destination="fmo-hG-Sbv" id="HPk-21-vyY"/>
-                        <outlet property="num9" destination="30u-2i-lZ9" id="lZ5-Is-fa7"/>
-                        <outlet property="point" destination="Ltw-GS-yZs" id="4cd-DG-gYx"/>
-                        <outlet property="substraction" destination="k8N-lC-oGa" id="KKY-9M-Nhv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6a-gs-AL8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
