@@ -8,70 +8,30 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var contenedor: UIStackView!
     @IBOutlet weak var label: UILabel!
-    let calculation = Calculations()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadComponents()
+        setupView()
     }
-    private func loadComponents() {
+    private func setupView() {
         label.textColor = .black
-        contenedor.spacing = 10
-        mekeButtons()
+        let customStackVertical = CustomStackVertical()
+        let customRow: CustomRow = CustomRow(customStackVertical: customStackVertical, delegateAction: self)
+        customRow.configure()
+        view.addSubview(customStackVertical)
+        NSLayoutConstraint.activate([
+            customStackVertical.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            customStackVertical.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6),
+            customStackVertical.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -6),
+            customStackVertical.widthAnchor.constraint(equalToConstant: 341),
+            customStackVertical.heightAnchor.constraint(equalToConstant: 431)
+        ])
     }
-    private func mekeButtons() {
-        var count = 0
-        var pos = 0
-        var row = CustomStackView()
-        for digito in Digitos.allCases {
-            addRowToStack(&count, &row)
-            let button: CustomButton = CustomButton()
-            let nameButton: String
-            if digito.tag() == "num" {
-                nameButton = "\(pos)"
-                pos += 1
-            } else {
-                nameButton = digito.tag()
-            }
-            button.setTitle(nameButton, for: .normal)
-            button.addTarget(self, action: #selector(onClick), for: .touchUpInside)
-            row.addArrangedSubview(button)
-            count += 1
-        }
-        contenedor.addArrangedSubview(row)
-    }
-    private func addRowToStack(_ count: inout Int, _ row: inout CustomStackView) {
-        if count == 4 {
-            contenedor.addArrangedSubview(row)
-            row = CustomStackView()
-            count = 0
-        }
-    }
-    @objc func onClick(_ btn: CustomButton) {
-        if let tag = btn.title(for: .normal) {
-            if tag == Digitos.equals.tag() {
-                sendOperations()
-            } else if tag == Digitos.del.tag() {
-                label.text = ""
-            } else {
-                addDigitToLabel(tag)
-            }
-        }
-    }
-    private func sendOperations() {
-        if let textoLabel = (label.text) {
-            let arrOperation = textoLabel.components(separatedBy: " ")
-            if arrOperation.count >= 3 {
-                let result = calculation.getOperations(arrOperation)
-                label.text = "\(result)"
-            }
-        }
-    }
-    private func addDigitToLabel(_ digito: String) {
+    private func writeOnLabel(_ digito: String) {
         var textoLabel = label.text ?? ""
         if !textoLabel.isEmpty {
-            if textoLabel.last == " " && digito.contains(" ") {
+            if textoLabel.last == " " && digito.contains("") {
                 let aux = textoLabel.prefix(textoLabel.count-3)
                 textoLabel = aux + digito
             } else {
@@ -81,5 +41,40 @@ class ViewController: UIViewController {
             textoLabel += digito
         }
         label.text = textoLabel
+    }
+}
+
+extension ViewController: DelegateAction {
+    func addActionButton(button: UIButton) {
+        button.addTarget(self, action: #selector(onClick), for: .touchUpInside)
+    }
+    @objc func onClick(_ btn: CustomButton) {
+        if let tag = btn.titleLabel?.text,
+           let character = CalculatorKeys(tag: "\(tag)") {
+            if character.rawValue == CalculatorKeys.clear.rawValue {
+                label.text = ""
+            } else if character.rawValue == CalculatorKeys.equals.rawValue {
+                sendOperations()
+            } else {
+                if Int(tag) != nil {
+                    writeOnLabel(tag)
+                } else {
+                    writeOnLabel(" \(tag) ")
+                }
+            }
+        }
+    }
+}
+
+extension ViewController {
+    private func sendOperations() {
+        if let textoLabel = (label.text) {
+            let arrOperation = textoLabel.components(separatedBy: " ")
+            if arrOperation.count >= 3 {
+                let instance = Calculator(arrOperation: arrOperation)
+                let result = instance.calculate()
+                label.text = "\(result)"
+            }
+        }
     }
 }

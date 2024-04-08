@@ -10,36 +10,37 @@ import UIKit
 class StoryBoardController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
-    let calculation = Calculations()
     @IBAction func onClick(_ button: UIButton) {
-
-        if let tag = button.titleLabel {
-            if tag.text == " = " {
-                sendOperations()
-            } else if tag.text == "AC" {
+        if let tag = button.titleLabel?.text,
+           let character = CalculatorKeys(tag: "\(tag)") {
+            if character.rawValue == CalculatorKeys.clear.rawValue {
                 label.text = ""
+            } else if character.rawValue == CalculatorKeys.equals.rawValue {
+                sendOperations()
             } else {
-                if let aux = tag.text {
-                    addDigitToLabel(aux)
+                if Int(tag) != nil {
+                    writeOnLabel(tag)
+                } else {
+                    writeOnLabel(" \(tag) ")
                 }
             }
         }
     }
+
     private func sendOperations() {
-
-        if let textoLabel = label.text {
+        if let textoLabel = (label.text) {
             let arrOperation = textoLabel.components(separatedBy: " ")
-
             if arrOperation.count >= 3 {
-                let result = calculation.getOperations(arrOperation)
+                let instance = Calculator(arrOperation: arrOperation)
+                let result = instance.calculate()
                 label.text = "\(result)"
             }
         }
     }
-    private func addDigitToLabel(_ digito: String) {
+    private func writeOnLabel(_ digito: String) {
         var textoLabel = label.text ?? ""
         if !textoLabel.isEmpty {
-            if textoLabel.last == " " && digito.contains(" ") {
+            if textoLabel.last == " " && digito.contains("") {
                 let aux = textoLabel.prefix(textoLabel.count-3)
                 textoLabel = aux + digito
             } else {
