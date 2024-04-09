@@ -9,31 +9,32 @@ import Foundation
 
 enum CalculatorKeys {
     case number(Int),
-         div,
-         mul,
-         minus,
+         division,
+         multiplication,
+         subtraction,
          dot,
-         plus,
+         addition,
          clear,
          equals,
-         percent
+         percent,
+        result(Double)
 }
 
 extension CalculatorKeys {
-    var rawValue: String {
+    var raw: String {
         var value: String
         switch self {
-        case .number(let int):
-            value = "\(int)"
-        case .div:
+        case .number(let num):
+            value = "\(num)"
+        case .division:
             value = "/"
-        case .mul:
+        case .multiplication:
             value = "*"
-        case .minus:
+        case .subtraction:
             value = "-"
         case .dot:
             value = "."
-        case .plus:
+        case .addition:
             value = "+"
         case .clear:
             value = "AC"
@@ -41,17 +42,19 @@ extension CalculatorKeys {
             value = "="
         case .percent:
             value = "%"
+        case .result(let res):
+            value = "\(res)"
         }
         return value
     }
     init?(tag: String) {
         switch tag {
         case "0"..."9": self = .number(Int(tag)!)
-        case "/":  self = .div
-        case "*": self = .mul
-        case "-": self = .minus
+        case "/":  self = .division
+        case "*": self = .multiplication
+        case "-": self = .subtraction
         case ".": self = .dot
-        case "+": self = .plus
+        case "+": self = .addition
         case "AC": self = .clear
         case "=": self = .equals
         default: return nil
@@ -59,4 +62,12 @@ extension CalculatorKeys {
     }
 }
 
+extension CalculatorKeys {
+    func extractDoublevalue() -> Double {
+        if let value =  Double(self.raw) {
+            return value
+        }
+        return 0
+    }
+}
 extension CalculatorKeys: Equatable { }

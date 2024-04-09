@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomButton: UIButton {
+final class Key: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)

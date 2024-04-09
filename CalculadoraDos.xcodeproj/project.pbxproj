@@ -15,11 +15,12 @@
 		D22ADD152BBD58D000506EA2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D22ADD142BBD58D000506EA2 /* Base */; };
 		D2870CFB2BC3EA880043D36E /* CustomStackVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2870CFA2BC3EA880043D36E /* CustomStackVertical.swift */; };
 		D2870CFD2BC413AB0043D36E /* CalculatorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2870CFC2BC413AB0043D36E /* CalculatorFunctions.swift */; };
-		D2870CFF2BC422990043D36E /* CustomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2870CFE2BC422990043D36E /* CustomRow.swift */; };
+		D2870CFF2BC422990043D36E /* RowKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2870CFE2BC422990043D36E /* RowKeyBoard.swift */; };
 		D2870D012BC426900043D36E /* DelegateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2870D002BC426900043D36E /* DelegateAction.swift */; };
 		D2870D032BC431D30043D36E /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2870D022BC431D30043D36E /* Calculator.swift */; };
-		D2AD3F112BBEA8A5009738DA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD3F102BBEA8A5009738DA /* CustomButton.swift */; };
-		D2AD3F142BBEB17A009738DA /* CustomStackHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD3F132BBEB17A009738DA /* CustomStackHorizontal.swift */; };
+		D2870D072BC56A740043D36E /* ButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2870D062BC56A740043D36E /* ButtonController.swift */; };
+		D2AD3F112BBEA8A5009738DA /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD3F102BBEA8A5009738DA /* Key.swift */; };
+		D2AD3F142BBEB17A009738DA /* ContentKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD3F132BBEB17A009738DA /* ContentKeyBoard.swift */; };
 		D2AD3F162BBEB422009738DA /* CalculatorKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD3F152BBEB422009738DA /* CalculatorKeys.swift */; };
 		D2AD3F1E2BBEDE6D009738DA /* StoryBoardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD3F1D2BBEDE6D009738DA /* StoryBoardController.swift */; };
 /* End PBXBuildFile section */
@@ -35,11 +36,12 @@
 		D22ADD162BBD58D000506EA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2870CFA2BC3EA880043D36E /* CustomStackVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackVertical.swift; sourceTree = "<group>"; };
 		D2870CFC2BC413AB0043D36E /* CalculatorFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorFunctions.swift; sourceTree = "<group>"; };
-		D2870CFE2BC422990043D36E /* CustomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRow.swift; sourceTree = "<group>"; };
+		D2870CFE2BC422990043D36E /* RowKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowKeyBoard.swift; sourceTree = "<group>"; };
 		D2870D002BC426900043D36E /* DelegateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateAction.swift; sourceTree = "<group>"; };
 		D2870D022BC431D30043D36E /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
-		D2AD3F102BBEA8A5009738DA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		D2AD3F132BBEB17A009738DA /* CustomStackHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackHorizontal.swift; sourceTree = "<group>"; };
+		D2870D062BC56A740043D36E /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
+		D2AD3F102BBEA8A5009738DA /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		D2AD3F132BBEB17A009738DA /* ContentKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentKeyBoard.swift; sourceTree = "<group>"; };
 		D2AD3F152BBEB422009738DA /* CalculatorKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorKeys.swift; sourceTree = "<group>"; };
 		D2AD3F1D2BBEDE6D009738DA /* StoryBoardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,10 +100,10 @@
 		D2AD3F0D2BBEA745009738DA /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D2AD3F102BBEA8A5009738DA /* CustomButton.swift */,
-				D2AD3F132BBEB17A009738DA /* CustomStackHorizontal.swift */,
+				D2AD3F102BBEA8A5009738DA /* Key.swift */,
+				D2AD3F132BBEB17A009738DA /* ContentKeyBoard.swift */,
 				D2870CFA2BC3EA880043D36E /* CustomStackVertical.swift */,
-				D2870CFE2BC422990043D36E /* CustomRow.swift */,
+				D2870CFE2BC422990043D36E /* RowKeyBoard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -113,6 +115,7 @@
 				D2AD3F1D2BBEDE6D009738DA /* StoryBoardController.swift */,
 				D2870D002BC426900043D36E /* DelegateAction.swift */,
 				D2870D022BC431D30043D36E /* Calculator.swift */,
+				D2870D062BC56A740043D36E /* ButtonController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -218,18 +221,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2870CFF2BC422990043D36E /* CustomRow.swift in Sources */,
+				D2870CFF2BC422990043D36E /* RowKeyBoard.swift in Sources */,
 				D22ADD0D2BBD58CE00506EA2 /* ViewController.swift in Sources */,
 				D22ADD092BBD58CE00506EA2 /* AppDelegate.swift in Sources */,
 				D2870D012BC426900043D36E /* DelegateAction.swift in Sources */,
 				D2AD3F1E2BBEDE6D009738DA /* StoryBoardController.swift in Sources */,
 				D2870D032BC431D30043D36E /* Calculator.swift in Sources */,
-				D2AD3F112BBEA8A5009738DA /* CustomButton.swift in Sources */,
+				D2AD3F112BBEA8A5009738DA /* Key.swift in Sources */,
 				D2AD3F162BBEB422009738DA /* CalculatorKeys.swift in Sources */,
 				D22ADD0B2BBD58CE00506EA2 /* SceneDelegate.swift in Sources */,
-				D2AD3F142BBEB17A009738DA /* CustomStackHorizontal.swift in Sources */,
+				D2AD3F142BBEB17A009738DA /* ContentKeyBoard.swift in Sources */,
 				D2870CFD2BC413AB0043D36E /* CalculatorFunctions.swift in Sources */,
 				D2870CFB2BC3EA880043D36E /* CustomStackVertical.swift in Sources */,
+				D2870D072BC56A740043D36E /* ButtonController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

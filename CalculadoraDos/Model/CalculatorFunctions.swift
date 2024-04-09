@@ -20,13 +20,13 @@ extension CalculatorFunctions {
         var result: Double
         switch expression {
         case let .number(value):
-            result = value
+            result = Double(value)
         case let .addition(left, right):
             result = evaluate(left) + evaluate(right)
         case let .multiplication(left, right):
             result = evaluate(left) * evaluate(right)
         case let .subtraction(left, right):
-            result = evaluate(left) + evaluate(right)
+            result = evaluate(left) - evaluate(right)
         case let .division(left, right):
             result = evaluate(left) / evaluate(right)
         }

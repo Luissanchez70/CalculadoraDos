@@ -8,47 +8,22 @@
 import UIKit
 
 class StoryBoardController: UIViewController {
-
     @IBOutlet weak var label: UILabel!
-    @IBAction func onClick(_ button: UIButton) {
-        if let tag = button.titleLabel?.text,
-           let character = CalculatorKeys(tag: "\(tag)") {
-            if character.rawValue == CalculatorKeys.clear.rawValue {
-                label.text = ""
-            } else if character.rawValue == CalculatorKeys.equals.rawValue {
-                sendOperations()
-            } else {
-                if Int(tag) != nil {
-                    writeOnLabel(tag)
-                } else {
-                    writeOnLabel(" \(tag) ")
-                }
-            }
-        }
-    }
+    private let buttonController = ButtonController()
 
-    private func sendOperations() {
-        if let textoLabel = (label.text) {
-            let arrOperation = textoLabel.components(separatedBy: " ")
-            if arrOperation.count >= 3 {
-                let instance = Calculator(arrOperation: arrOperation)
-                let result = instance.calculate()
-                label.text = "\(result)"
-            }
+    @IBAction func onClick(_ button: UIButton) {
+        guard let character = CalculatorKeys(tag: (button.titleLabel?.text)!) else { return }
+        switch character {
+        case CalculatorKeys.clear:
+            buttonController.pulsations.removeAll()
+        case CalculatorKeys.equals:
+            buttonController.sendOperations()
+        default:
+            buttonController.addCharacter(character: character)
         }
+        showOperations()
     }
-    private func writeOnLabel(_ digito: String) {
-        var textoLabel = label.text ?? ""
-        if !textoLabel.isEmpty {
-            if textoLabel.last == " " && digito.contains("") {
-                let aux = textoLabel.prefix(textoLabel.count-3)
-                textoLabel = aux + digito
-            } else {
-                textoLabel += digito
-            }
-        } else {
-            textoLabel += digito
-        }
-        label.text = textoLabel
+    func showOperations() {
+        label.text  = buttonController.pulsations.map { $0.raw }.joined(separator: " ")
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomStackHorizontal: UIStackView {
+final class ContentKeyBoard: UIStackView {
     init() {
         super.init(frame: .zero)
         setupView()

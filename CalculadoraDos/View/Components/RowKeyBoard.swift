@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-class CustomRow {
-    let operations = [CalculatorKeys.div,
-                      CalculatorKeys.mul,
-                      CalculatorKeys.plus,
+class RowKeyBoard {
+    let operations = [CalculatorKeys.division,
+                      CalculatorKeys.multiplication,
+                      CalculatorKeys.addition,
                       CalculatorKeys.dot,
-                      CalculatorKeys.minus,
+                      CalculatorKeys.subtraction,
                       CalculatorKeys.clear,
                       CalculatorKeys.equals
     ]
@@ -27,17 +27,17 @@ class CustomRow {
         var itemPerRow = 0
         var positionOperation = 0
         var positionNumber = 0
-        var rowStackView = CustomStackHorizontal()
+        var rowStackView = ContentKeyBoard()
         for _ in 0...16 {
             addRowToStack(&itemPerRow, &rowStackView)
-            let btn = CustomButton()
+            let btn = Key()
             var title: String?
             if positionNumber <= 9 && itemPerRow < 3 {
                 title = "\(positionNumber)"
                 positionNumber += 1
             } else {
                 if positionOperation < operations.count {
-                    title = "\(String(operations[positionOperation].rawValue))"
+                    title = "\(String(operations[positionOperation].raw))"
                     positionOperation += 1
                 }
             }
@@ -49,10 +49,10 @@ class CustomRow {
         }
          customStackVertical.addArrangedSubview(rowStackView)
     }
-    private func addRowToStack(_ itemPerRow: inout Int, _ rowStackView: inout CustomStackHorizontal) {
+    private func addRowToStack(_ itemPerRow: inout Int, _ rowStackView: inout ContentKeyBoard) {
         if itemPerRow == 4 {
             customStackVertical.addArrangedSubview(rowStackView)
-            rowStackView = CustomStackHorizontal()
+            rowStackView = ContentKeyBoard()
             itemPerRow = 0
         }
     }

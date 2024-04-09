@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
+    private let buttonController = ButtonController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
     private func setupView() {
         label.textColor = .black
         let customStackVertical = CustomStackVertical()
-        let customRow: CustomRow = CustomRow(customStackVertical: customStackVertical, delegateAction: self)
+        let customRow: RowKeyBoard = RowKeyBoard(customStackVertical: customStackVertical, delegateAction: self)
         customRow.configure()
         view.addSubview(customStackVertical)
         NSLayoutConstraint.activate([
@@ -28,53 +29,25 @@ class ViewController: UIViewController {
             customStackVertical.heightAnchor.constraint(equalToConstant: 431)
         ])
     }
-    private func writeOnLabel(_ digito: String) {
-        var textoLabel = label.text ?? ""
-        if !textoLabel.isEmpty {
-            if textoLabel.last == " " && digito.contains("") {
-                let aux = textoLabel.prefix(textoLabel.count-3)
-                textoLabel = aux + digito
-            } else {
-                textoLabel += digito
-            }
-        } else {
-            textoLabel += digito
-        }
-        label.text = textoLabel
-    }
 }
 
 extension ViewController: DelegateAction {
     func addActionButton(button: UIButton) {
         button.addTarget(self, action: #selector(onClick), for: .touchUpInside)
     }
-    @objc func onClick(_ btn: CustomButton) {
-        if let tag = btn.titleLabel?.text,
-           let character = CalculatorKeys(tag: "\(tag)") {
-            if character.rawValue == CalculatorKeys.clear.rawValue {
-                label.text = ""
-            } else if character.rawValue == CalculatorKeys.equals.rawValue {
-                sendOperations()
-            } else {
-                if Int(tag) != nil {
-                    writeOnLabel(tag)
-                } else {
-                    writeOnLabel(" \(tag) ")
-                }
-            }
+    @objc func onClick(_ button: Key) {
+        guard let character = CalculatorKeys(tag: (button.titleLabel?.text)!) else { return }
+        switch character {
+        case CalculatorKeys.clear:
+            buttonController.pulsations.removeAll()
+        case CalculatorKeys.equals:
+            buttonController.sendOperations()
+        default:
+            buttonController.addCharacter(character: character)
         }
+        showOperations()
     }
-}
-
-extension ViewController {
-    private func sendOperations() {
-        if let textoLabel = (label.text) {
-            let arrOperation = textoLabel.components(separatedBy: " ")
-            if arrOperation.count >= 3 {
-                let instance = Calculator(arrOperation: arrOperation)
-                let result = instance.calculate()
-                label.text = "\(result)"
-            }
-        }
+    func showOperations() {
+        label.text  = buttonController.pulsations.map { $0.raw }.joined(separator: " ")
     }
 }
