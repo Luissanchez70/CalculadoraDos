@@ -11,15 +11,14 @@ import UIKit
 class ButtonController {
     var pulsations: [CalculatorKeys] = []
     func addCharacter(character: CalculatorKeys) {
-        if pulsations.count > 0,
-           case .number(let int) = character,
-           case .number(let int) = pulsations[pulsations.count-1] {
-            guard let rawInt = Int(("\(pulsations[pulsations.count-1].raw)\(character.raw)")) else { return }
-            let newCharacter = CalculatorKeys.number(rawInt)
-            pulsations[pulsations.count-1] = newCharacter
-        } else {
+        guard !pulsations.isEmpty,
+              case .number(let num2) = character,
+              case .number(let num1) = pulsations[pulsations.count-1]  else {
             pulsations.append(character)
+            return
         }
+        guard let rawInt = Int(("\(num1)\(num2)")) else { return }
+        pulsations[pulsations.count-1] = CalculatorKeys.number(rawInt)
     }
     func sendOperations() {
        if pulsations.count >= 3 {
