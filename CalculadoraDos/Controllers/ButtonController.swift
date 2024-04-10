@@ -11,19 +11,36 @@ import UIKit
 class ButtonController {
     var pulsations: [CalculatorKeys] = []
     func addCharacter(character: CalculatorKeys) {
-        guard !pulsations.isEmpty,
-              case .number(let num2) = character,
-              case .number(let num1) = pulsations[pulsations.count-1]  else {
+        if case .number(let num2) = character,
+           case .number(let num1) = pulsations.last {
+            pulsations.removeLast()
+            pulsations.append(.number(10 * num1 + num2))
+        } else {
             pulsations.append(character)
-            return
         }
-        guard let rawInt = Int(("\(num1)\(num2)")) else { return }
-        pulsations[pulsations.count-1] = CalculatorKeys.number(rawInt)
     }
     func sendOperations() {
        if pulsations.count >= 3 {
            let instance = Calculator(arrOperation: pulsations)
            pulsations = instance.calculate()
         }
+    }
+    func showOperations() -> String {
+        var aux: String = ""
+        for xee in pulsations {
+            if case .number(let num) = xee {
+                let numentero = Double(Int(num))
+                let numdecimal = num
+                if (numdecimal).isEqual(to: numentero) {
+                    aux += "\(Int(xee.extractDoublevalue))"
+                } else {
+                    aux += "\(xee.extractDoublevalue)"
+                }
+            } else {
+                aux += " \(xee.raw) "
+            }
+            print(aux)
+        }
+        return aux
     }
 }

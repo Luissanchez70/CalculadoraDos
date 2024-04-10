@@ -45,9 +45,6 @@ extension ViewController: DelegateAction {
         default:
             buttonController.addCharacter(character: character)
         }
-        showOperations()
-    }
-    func showOperations() {
-        label.text  = buttonController.pulsations.map { $0.raw }.joined(separator: " ")
+        label.text! = buttonController.showOperations()
     }
 }

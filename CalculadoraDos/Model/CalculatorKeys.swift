@@ -8,16 +8,14 @@
 import Foundation
 
 enum CalculatorKeys {
-    case number(Int),
+    case number(Double),
          division,
          multiplication,
          subtraction,
          dot,
          addition,
          clear,
-         equals,
-         percent,
-        result(Double)
+         equals
 }
 
 extension CalculatorKeys {
@@ -40,16 +38,12 @@ extension CalculatorKeys {
             value = "AC"
         case .equals:
             value = "="
-        case .percent:
-            value = "%"
-        case .result(let res):
-            value = "\(res)"
         }
         return value
     }
     init?(tag: String) {
         switch tag {
-        case "0"..."9": self = .number(Int(tag)!)
+        case "0"..."9": self = .number(Double(tag)!)
         case "/":  self = .division
         case "*": self = .multiplication
         case "-": self = .subtraction
@@ -63,11 +57,13 @@ extension CalculatorKeys {
 }
 
 extension CalculatorKeys {
-    func extractDoublevalue() -> Double {
-        if let value =  Double(self.raw) {
-            return value
+    var extractDoublevalue: Double {
+        switch self {
+        case .number(let value):
+            return Double(value)
+        default: return 0
         }
-        return 0
     }
 }
+
 extension CalculatorKeys: Equatable { }

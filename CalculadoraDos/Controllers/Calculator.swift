@@ -13,7 +13,6 @@ class Calculator {
                                        CalculatorKeys.multiplication,
                                        CalculatorKeys.subtraction,
                                        CalculatorKeys.addition]
-    
     init(arrOperation: [CalculatorKeys]) {
         self .arrOperation = arrOperation
     }
@@ -35,8 +34,10 @@ class Calculator {
         return arrOperation
     }
     func calculate(position: Int) -> CalculatorKeys {
-        let number1 = CalculatorFunctions.number(arrOperation[position-1].extractDoublevalue())
-        let number2 = CalculatorFunctions.number(arrOperation[position+1].extractDoublevalue())
+        let number1 = CalculatorFunctions.number(arrOperation[position-1].extractDoublevalue)
+        let number2 = CalculatorFunctions.number(arrOperation[position+1].extractDoublevalue)
+        print("num1 \(number1)")
+        print("num1 \(number2)")
         let aux: CalculatorFunctions
         switch arrOperation[position] {
         case CalculatorKeys.division:
@@ -48,6 +49,6 @@ class Calculator {
         default:
             aux = CalculatorFunctions.addition(number1, number2)
         }
-        return CalculatorKeys.result( aux.evaluate(aux) )
+        return CalculatorKeys.number( aux.evaluate(aux) )
     }
 }
