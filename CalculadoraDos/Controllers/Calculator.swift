@@ -34,21 +34,20 @@ class Calculator {
         return arrOperation
     }
     func calculate(position: Int) -> CalculatorKeys {
-        let number1 = CalculatorFunctions.number(arrOperation[position-1].extractDoublevalue)
-        let number2 = CalculatorFunctions.number(arrOperation[position+1].extractDoublevalue)
-        print("num1 \(number1)")
-        print("num1 \(number2)")
-        let aux: CalculatorFunctions
-        switch arrOperation[position] {
-        case CalculatorKeys.division:
-            aux = CalculatorFunctions.division(number1, number2)
-        case CalculatorKeys.multiplication:
-            aux = CalculatorFunctions.multiplication(number1, number2)
-        case CalculatorKeys.subtraction:
-            aux = CalculatorFunctions.subtraction(number1, number2)
-        default:
-            aux = CalculatorFunctions.addition(number1, number2)
+        var aux: CalculatorFunctions = .number(0)
+        if let num1 = arrOperation[position-1].extractDoublevalue,
+           let num2 = arrOperation[position+1].extractDoublevalue {
+            switch arrOperation[position] {
+            case CalculatorKeys.division:
+                aux = CalculatorFunctions.division(.number(num1), .number(num2))
+            case CalculatorKeys.multiplication:
+                aux = CalculatorFunctions.multiplication(.number(num1), .number(num2))
+            case CalculatorKeys.subtraction:
+                aux = CalculatorFunctions.subtraction(.number(num1), .number(num2))
+            default:
+                aux = CalculatorFunctions.addition(.number(num1), .number(num2))
+            }
         }
-        return CalculatorKeys.number( aux.evaluate(aux) )
+        return CalculatorKeys.number(aux.evaluate(aux))
     }
 }

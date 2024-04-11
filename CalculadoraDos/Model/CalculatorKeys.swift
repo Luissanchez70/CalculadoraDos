@@ -57,11 +57,11 @@ extension CalculatorKeys {
 }
 
 extension CalculatorKeys {
-    var extractDoublevalue: Double {
+    var extractDoublevalue: Double? {
         switch self {
         case .number(let value):
-            return Double(value)
-        default: return 0
+            return value
+        default: return nil
         }
     }
 }

@@ -31,11 +31,7 @@ class ButtonController {
             if case .number(let num) = xee {
                 let numentero = Double(Int(num))
                 let numdecimal = num
-                if (numdecimal).isEqual(to: numentero) {
-                    aux += "\(Int(xee.extractDoublevalue))"
-                } else {
-                    aux += "\(xee.extractDoublevalue)"
-                }
+                aux += numdecimal == numentero ? "\(Int(numentero))" : "\(numdecimal)"
             } else {
                 aux += " \(xee.raw) "
             }

@@ -21,6 +21,6 @@ class StoryBoardController: UIViewController {
         default:
             buttonController.addCharacter(character: character)
         }
-        label.text! = buttonController.showOperations()
+        label.text = buttonController.showOperations()
     }
 }
