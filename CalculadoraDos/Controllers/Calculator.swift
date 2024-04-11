@@ -9,7 +9,8 @@ import Foundation
 
 class Calculator {
     var arrOperation: [CalculatorKeys]
-    let operators: [CalculatorKeys] = [CalculatorKeys.division,
+    let operators: [CalculatorKeys] = [CalculatorKeys.dot,
+                                       CalculatorKeys.division,
                                        CalculatorKeys.multiplication,
                                        CalculatorKeys.subtraction,
                                        CalculatorKeys.addition]
@@ -18,36 +19,30 @@ class Calculator {
     }
     func calculate() -> [CalculatorKeys] {
         for operation in operators {
-            var pos = 0
-            while pos < arrOperation.count-1 {
-                if operation == arrOperation[pos] {
-                    let resultPosition: CalculatorKeys = calculate(position: pos)
-                    arrOperation[pos] = resultPosition
-                    arrOperation.remove(at: pos+1)
-                    arrOperation.remove(at: pos-1)
-                    pos = 0
-                }
-                pos += 1
+            var indexOpt = arrOperation.firstIndex(of: operation)
+            while let index = indexOpt {
+                arrOperation[index] = calculate(index)
+                arrOperation.remove(at: index+1)
+                arrOperation.remove(at: index-1)
+                indexOpt = arrOperation.firstIndex(of: operation)
             }
         }
-
         return arrOperation
     }
-    func calculate(position: Int) -> CalculatorKeys {
-        var aux: CalculatorFunctions = .number(0)
-        if let num1 = arrOperation[position-1].extractDoublevalue,
-           let num2 = arrOperation[position+1].extractDoublevalue {
-            switch arrOperation[position] {
+    func calculate(_ index: Int) -> CalculatorKeys {
+        guard let num1 = arrOperation[index-1].extractDoublevalue,
+              let num2 = arrOperation[index+1].extractDoublevalue else { return arrOperation[index] }
+            switch arrOperation[index] {
             case CalculatorKeys.division:
-                aux = CalculatorFunctions.division(.number(num1), .number(num2))
+                return .number(num1 / num2)
             case CalculatorKeys.multiplication:
-                aux = CalculatorFunctions.multiplication(.number(num1), .number(num2))
+                return .number(num1 * num2)
             case CalculatorKeys.subtraction:
-                aux = CalculatorFunctions.subtraction(.number(num1), .number(num2))
+                return .number(num1 - num2)
+            case CalculatorKeys.dot:
+                return .number(num1 + num2 / pow(10, Double(String(num2).count)))
             default:
-                aux = CalculatorFunctions.addition(.number(num1), .number(num2))
+                return .number(num1 + num2)
             }
-        }
-        return CalculatorKeys.number(aux.evaluate(aux))
     }
 }
