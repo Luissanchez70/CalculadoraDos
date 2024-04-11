@@ -7,16 +7,16 @@
 
 import UIKit
 
-final class CustomStackView: UIStackView {
+final class ContentKeyBoard: UIStackView {
     init() {
         super.init(frame: .zero)
-        configure()
+        setupView()
     }
     required init(coder: NSCoder) {
         super.init(coder: coder)
-        configure()
+        setupView()
     }
-    private func configure() {
+    private func setupView() {
         self.axis = .horizontal
         self.distribution = .fillEqually
         self.spacing = 10

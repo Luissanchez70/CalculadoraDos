@@ -8,46 +8,19 @@
 import UIKit
 
 class StoryBoardController: UIViewController {
-
     @IBOutlet weak var label: UILabel!
-    let calculation = Calculations()
+    private let buttonController = ButtonController()
+
     @IBAction func onClick(_ button: UIButton) {
-
-        if let tag = button.titleLabel {
-            if tag.text == " = " {
-                sendOperations()
-            } else if tag.text == "AC" {
-                label.text = ""
-            } else {
-                if let aux = tag.text {
-                    addDigitToLabel(aux)
-                }
-            }
+        guard let character = CalculatorKeys(tag: (button.titleLabel?.text)!) else { return }
+        switch character {
+        case CalculatorKeys.clear:
+            buttonController.pulsations.removeAll()
+        case CalculatorKeys.equals:
+            buttonController.sendOperations()
+        default:
+            buttonController.addCharacter(character: character)
         }
-    }
-    private func sendOperations() {
-
-        if let textoLabel = label.text {
-            let arrOperation = textoLabel.components(separatedBy: " ")
-
-            if arrOperation.count >= 3 {
-                let result = calculation.getOperations(arrOperation)
-                label.text = "\(result)"
-            }
-        }
-    }
-    private func addDigitToLabel(_ digito: String) {
-        var textoLabel = label.text ?? ""
-        if !textoLabel.isEmpty {
-            if textoLabel.last == " " && digito.contains(" ") {
-                let aux = textoLabel.prefix(textoLabel.count-3)
-                textoLabel = aux + digito
-            } else {
-                textoLabel += digito
-            }
-        } else {
-            textoLabel += digito
-        }
-        label.text = textoLabel
+        label.text = buttonController.showOperations()
     }
 }

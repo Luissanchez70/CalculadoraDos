@@ -7,18 +7,18 @@
 
 import UIKit
 
-final class CustomButton: UIButton {
+final class Key: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        configure()
+        setupView()
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configure()
+        setupView()
     }
 
-    private func configure() {
+    private func setupView() {
         self.setTitleColor(.white, for: .normal)
         self.backgroundColor = .lightGray
         self.widthAnchor.constraint(equalToConstant: 80).isActive = true
