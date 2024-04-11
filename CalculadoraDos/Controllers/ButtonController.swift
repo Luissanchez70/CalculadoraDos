@@ -17,9 +17,9 @@ class ButtonController {
             let newKey: CalculatorKeys
             pulsations.removeLast()
             if activatedDot {
-                guard let numDecimal = Double("\(Int(num1)).\(Int(num2))") else { return}
+                let aux = Double(Int(num1))
+                guard let numDecimal = aux == num1 ? Double("\(Int(num1)).\(Int(num2))") : Double("\(num1)\(Int(num2))") else { return }
                 newKey = .number(numDecimal)
-                activatedDot = false
             } else {
                 newKey = .number(10 * num1 + num2)
             }
@@ -27,6 +27,7 @@ class ButtonController {
         } else if case .dot = character {
             activatedDot = true
         } else {
+            activatedDot = false
             pulsations.append(character)
         }
     }
