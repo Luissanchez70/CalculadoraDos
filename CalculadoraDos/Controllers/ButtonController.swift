@@ -10,11 +10,22 @@ import UIKit
 
 class ButtonController {
     var pulsations: [CalculatorKeys] = []
+    var activatedDot: Bool = false
     func addCharacter(character: CalculatorKeys) {
         if case .number(let num2) = character,
            case .number(let num1) = pulsations.last {
+            let newKey: CalculatorKeys
             pulsations.removeLast()
-            pulsations.append(.number(10 * num1 + num2))
+            if activatedDot {
+                guard let numDecimal = Double("\(Int(num1)).\(Int(num2))") else { return}
+                newKey = .number(numDecimal)
+                activatedDot = false
+            } else {
+                newKey = .number(10 * num1 + num2)
+            }
+            pulsations.append(newKey)
+        } else if case .dot = character {
+            activatedDot = true
         } else {
             pulsations.append(character)
         }
