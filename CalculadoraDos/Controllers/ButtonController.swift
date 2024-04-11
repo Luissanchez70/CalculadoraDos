@@ -10,7 +10,18 @@ import UIKit
 
 class ButtonController {
     var pulsations: [CalculatorKeys] = []
-    func addCharacter(character: CalculatorKeys) {
+    func click(text: String) {
+        guard let character = CalculatorKeys(tag: text) else { return }
+        switch character {
+        case CalculatorKeys.clear:
+            pulsations.removeAll()
+        case CalculatorKeys.equals:
+            sendOperations()
+        default:
+            addCharacter(character: character)
+        }
+    }
+    private func addCharacter(character: CalculatorKeys) {
         if case .number(let newNumber) = character,
            case .number(let lastNumber) = pulsations.last {
             pulsations.removeLast()
@@ -19,24 +30,13 @@ class ButtonController {
             pulsations.append(character)
         }
     }
-    func sendOperations() {
+    private func sendOperations() {
        if pulsations.count >= 3 {
            let instance = Calculator(arrOperation: pulsations)
            pulsations = instance.calculate()
         }
     }
     func showOperations() -> String {
-        var aux: String = ""
-        for xee in pulsations {
-            if case .number(let num) = xee {
-                let numentero = Double(Int(num))
-                let numdecimal = num
-                aux += numdecimal == numentero ? "\(Int(numentero))" : "\(numdecimal)"
-            } else {
-                aux += " \(xee.raw) "
-            }
-            print(aux)
-        }
-        return aux
+        pulsations.map { $0.rawRepresentation } .joined()
     }
 }

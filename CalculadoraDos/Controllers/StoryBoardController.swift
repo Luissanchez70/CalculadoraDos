@@ -12,15 +12,9 @@ class StoryBoardController: UIViewController {
     private let buttonController = ButtonController()
 
     @IBAction func onClick(_ button: UIButton) {
-        guard let character = CalculatorKeys(tag: (button.titleLabel?.text)!) else { return }
-        switch character {
-        case CalculatorKeys.clear:
-            buttonController.pulsations.removeAll()
-        case CalculatorKeys.equals:
-            buttonController.sendOperations()
-        default:
-            buttonController.addCharacter(character: character)
-        }
+        guard let text = button.titleLabel?.text else { return }
+        buttonController.click(text: text)
+        label.text = buttonController.showOperations()
         label.text = buttonController.showOperations()
     }
 }

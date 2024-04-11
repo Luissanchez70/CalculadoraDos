@@ -21,28 +21,39 @@ class Calculator {
         for operation in operators {
             var indexOpt = arrOperation.firstIndex(of: operation)
             while let index = indexOpt {
+                guard arrOperation.count > 2 else { return arrOperation }
                 arrOperation[index] = calculate(index)
-                arrOperation.remove(at: index+1)
-                arrOperation.remove(at: index-1)
+                let beforeIndex = arrOperation.index(before: index)
+                let afterIndext = arrOperation.index(after: index)
+                if afterIndext < arrOperation.count && beforeIndex >= 0 {
+                    arrOperation.remove(at: arrOperation.index(after: index))
+                    arrOperation.remove(at: arrOperation.index(before: index))
+                }
                 indexOpt = arrOperation.firstIndex(of: operation)
             }
         }
         return arrOperation
     }
     func calculate(_ index: Int) -> CalculatorKeys {
-        guard let num1 = arrOperation[index-1].extractDoublevalue,
-              let num2 = arrOperation[index+1].extractDoublevalue else { return arrOperation[index] }
-            switch arrOperation[index] {
-            case CalculatorKeys.division:
-                return .number(num1 / num2)
-            case CalculatorKeys.multiplication:
-                return .number(num1 * num2)
-            case CalculatorKeys.subtraction:
-                return .number(num1 - num2)
-            case CalculatorKeys.dot:
-                return .number(num1 + num2 / pow(10, Double(String(num2).count)))
-            default:
-                return .number(num1 + num2)
-            }
+        let beforeIndex = arrOperation.index(before: index)
+        let afterIndext = arrOperation.index(after: index)
+        if afterIndext < arrOperation.count && beforeIndex >= 0 {
+            guard let num1 = arrOperation[beforeIndex].extractDoublevalue,
+                  let num2 = arrOperation[afterIndext].extractDoublevalue else { return arrOperation[index] }
+                switch arrOperation[index] {
+                case CalculatorKeys.division:
+                    return .number(num1 / num2)
+                case CalculatorKeys.multiplication:
+                    return .number(num1 * num2)
+                case CalculatorKeys.subtraction:
+                    return .number(num1 - num2)
+                case CalculatorKeys.dot:
+                    return .number(num1 + num2 / pow(10, Double(String("\(Int(num2))").count)))
+                default:
+                    return .number(num1 + num2)
+                }
+        } else {
+            return arrOperation[index]
+        }
     }
 }
