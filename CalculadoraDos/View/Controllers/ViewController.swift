@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
-    private let buttonController = ButtonController()
+    private let buttonController = CalculatorViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
-class ButtonController {
+class CalculatorViewModel {
+    // MARK: Variables
     var pulsations: [CalculatorKeys] = []
+    // MARK: - Public Functions
     func click(text: String) {
         guard let character = CalculatorKeys(tag: text) else { return }
+        // TO DO: falta añadir logica ...
         switch character {
         case CalculatorKeys.clear:
             pulsations.removeAll()
@@ -21,7 +24,14 @@ class ButtonController {
             addCharacter(character: character)
         }
     }
-    private func addCharacter(character: CalculatorKeys) {
+    func showOperations() -> String {
+        // FIX ME: esto hay que arreglarlo
+        pulsations.map { $0.rawRepresentation } .joined()
+    }
+}
+// MARK: - Private Functions
+private extension CalculatorViewModel {
+    func addCharacter(character: CalculatorKeys) {
         if case .number(let newNumber) = character,
            case .number(let lastNumber) = pulsations.last {
             pulsations.removeLast()
@@ -30,13 +40,10 @@ class ButtonController {
             pulsations.append(character)
         }
     }
-    private func sendOperations() {
+    func sendOperations() {
        if pulsations.count >= 3 {
-           let instance = Calculator(arrOperation: pulsations)
+           let instance = AdvancedCalculator(arrOperation: pulsations)
            pulsations = instance.calculate()
         }
-    }
-    func showOperations() -> String {
-        pulsations.map { $0.rawRepresentation } .joined()
     }
 }

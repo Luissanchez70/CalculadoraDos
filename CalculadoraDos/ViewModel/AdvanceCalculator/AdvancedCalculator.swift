@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Calculator {
+class AdvancedCalculator {
     var arrOperation: [CalculatorKeys]
     let operators: [CalculatorKeys] = [CalculatorKeys.dot,
                                        CalculatorKeys.division,
@@ -23,11 +23,13 @@ class Calculator {
             while let index = indexOpt {
                 guard arrOperation.count > 2 else { return arrOperation }
                 arrOperation[index] = calculate(index)
-                let beforeIndex = arrOperation.index(before: index)
-                let afterIndext = arrOperation.index(after: index)
-                if afterIndext < arrOperation.count && beforeIndex >= 0 {
-                    arrOperation.remove(at: arrOperation.index(after: index))
-                    arrOperation.remove(at: arrOperation.index(before: index))
+                let beforeIndex = index - 1
+                let afterIndex = index + 1
+                if (0..<arrOperation.count).contains(afterIndex) {
+                    arrOperation.remove(at: afterIndex)
+                }
+                if (0..<arrOperation.count).contains(beforeIndex) {
+                    arrOperation.remove(at: beforeIndex)
                 }
                 indexOpt = arrOperation.firstIndex(of: operation)
             }
