@@ -30,7 +30,6 @@ class ViewController: UIViewController {
         ])
     }
 }
-
 extension ViewController: DelegateAction {
     func addActionButton(button: UIButton) {
         button.addTarget(self, action: #selector(onClick), for: .touchUpInside)

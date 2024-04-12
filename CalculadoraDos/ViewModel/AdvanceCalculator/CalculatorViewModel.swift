@@ -10,11 +10,10 @@ import UIKit
 
 class CalculatorViewModel {
     // MARK: Variables
-    var pulsations: [CalculatorKeys] = []
+    private var pulsations: [CalculatorKeys] = []
     // MARK: - Public Functions
     func click(text: String) {
         guard let character = CalculatorKeys(tag: text) else { return }
-        // TO DO: falta añadir logica ...
         switch character {
         case CalculatorKeys.clear:
             pulsations.removeAll()
@@ -25,7 +24,6 @@ class CalculatorViewModel {
         }
     }
     func showOperations() -> String {
-        // FIX ME: esto hay que arreglarlo
         pulsations.map { $0.rawRepresentation } .joined()
     }
 }

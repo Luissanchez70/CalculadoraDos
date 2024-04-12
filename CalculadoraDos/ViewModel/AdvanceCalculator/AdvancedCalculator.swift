@@ -8,8 +8,9 @@
 import Foundation
 
 class AdvancedCalculator {
-    var arrOperation: [CalculatorKeys]
-    let operators: [CalculatorKeys] = [CalculatorKeys.dot,
+    // MARK: - Variables and constructor
+    private var arrOperation: [CalculatorKeys]
+    private let operators: [CalculatorKeys] = [CalculatorKeys.dot,
                                        CalculatorKeys.division,
                                        CalculatorKeys.multiplication,
                                        CalculatorKeys.subtraction,
@@ -17,6 +18,7 @@ class AdvancedCalculator {
     init(arrOperation: [CalculatorKeys]) {
         self .arrOperation = arrOperation
     }
+    // MARK: - Public Functions
     func calculate() -> [CalculatorKeys] {
         for operation in operators {
             var indexOpt = arrOperation.firstIndex(of: operation)
@@ -36,6 +38,9 @@ class AdvancedCalculator {
         }
         return arrOperation
     }
+}
+// MARK: - Private Functions
+private extension AdvancedCalculator {
     func calculate(_ index: Int) -> CalculatorKeys {
         let beforeIndex = arrOperation.index(before: index)
         let afterIndext = arrOperation.index(after: index)
