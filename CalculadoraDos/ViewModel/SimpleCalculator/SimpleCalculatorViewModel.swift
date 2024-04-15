@@ -13,7 +13,7 @@ class SimpleCalculatorViewModel {
     private var number1: CalculatorKeys?
     private var number2: CalculatorKeys?
     private var sing: CalculatorKeys?
-    private var simpleCalculator: SimpleCalculator?
+    private var simpleCalculator: SimpleDelegateOperation?
     // MARK: - Public Functions
     func click(text: String) {
         let key = CalculatorKeys(tag: text)
@@ -51,7 +51,7 @@ class SimpleCalculatorViewModel {
 extension SimpleCalculatorViewModel {
     func manageData() {
         guard let singAux = sing, let number1Aux = number1, let number2Aux = number2 else { return }
-        simpleCalculator = SimpleCalculator(sing: singAux, numer1: number1Aux, number2: number2Aux)
+        simpleCalculator = SimpleDelegateOperation(sing: singAux, numer1: number1Aux, number2: number2Aux)
         resetVariables()
     }
     func resetVariables() {

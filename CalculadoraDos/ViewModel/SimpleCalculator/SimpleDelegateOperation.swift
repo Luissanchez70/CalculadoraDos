@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SimpleCalculator {
+class SimpleDelegateOperation {
     // MARK: Variables and constructor
     private var sing: CalculatorKeys
     private var numer1: CalculatorKeys
@@ -24,15 +24,15 @@ class SimpleCalculator {
            let num2 = number2.extractDoublevalue {
             switch sing {
             case CalculatorKeys.division:
-                return .number(num1 / num2)
+                return OperationsNegotiation().division(num1, num2)
             case CalculatorKeys.multiplication:
-                return .number(num1 * num2)
+                return OperationsNegotiation().multiplication(num1, num2)
             case CalculatorKeys.subtraction:
-                return .number(num1 - num2)
+                return OperationsNegotiation().subtraction(num1, num2)
             case CalculatorKeys.dot:
-                return .number(num1 + num2 / pow(10, Double(String("\(Int(num2))").count)))
+                return OperationsNegotiation().dot(num1, num2)
             default:
-                return .number(num1 + num2)
+                return OperationsNegotiation().addition(num1, num2)
             }
         }
         return nil

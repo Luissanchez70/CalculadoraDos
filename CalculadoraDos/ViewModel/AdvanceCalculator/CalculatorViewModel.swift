@@ -40,7 +40,7 @@ private extension CalculatorViewModel {
     }
     func sendOperations() {
        if pulsations.count >= 3 {
-           let instance = AdvancedCalculator(arrOperation: pulsations)
+           let instance = AdvancedDelegateOperation(arrOperation: pulsations)
            pulsations = instance.calculate()
         }
     }

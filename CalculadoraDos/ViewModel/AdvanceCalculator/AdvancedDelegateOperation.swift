@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AdvancedCalculator {
+class AdvancedDelegateOperation {
     // MARK: - Variables and constructor
     private var arrOperation: [CalculatorKeys]
     private let operators: [CalculatorKeys] = [CalculatorKeys.dot,
@@ -40,25 +40,25 @@ class AdvancedCalculator {
     }
 }
 // MARK: - Private Functions
-private extension AdvancedCalculator {
+private extension AdvancedDelegateOperation {
     func calculate(_ index: Int) -> CalculatorKeys {
         let beforeIndex = arrOperation.index(before: index)
         let afterIndext = arrOperation.index(after: index)
         if afterIndext < arrOperation.count && beforeIndex >= 0 {
             guard let num1 = arrOperation[beforeIndex].extractDoublevalue,
                   let num2 = arrOperation[afterIndext].extractDoublevalue else { return arrOperation[index] }
-                switch arrOperation[index] {
-                case CalculatorKeys.division:
-                    return .number(num1 / num2)
-                case CalculatorKeys.multiplication:
-                    return .number(num1 * num2)
-                case CalculatorKeys.subtraction:
-                    return .number(num1 - num2)
-                case CalculatorKeys.dot:
-                    return .number(num1 + num2 / pow(10, Double(String("\(Int(num2))").count)))
-                default:
-                    return .number(num1 + num2)
-                }
+            switch arrOperation[index] {
+            case .division:
+                return OperationsNegotiation().division(num1, num2)
+            case .multiplication:
+                return OperationsNegotiation().multiplication(num1, num2)
+            case .subtraction:
+                return OperationsNegotiation().subtraction(num1, num2)
+            case .dot:
+                return OperationsNegotiation().dot(num1, num2)
+            default:
+                return OperationsNegotiation().addition(num1, num2)
+            }
         } else {
             return arrOperation[index]
         }
