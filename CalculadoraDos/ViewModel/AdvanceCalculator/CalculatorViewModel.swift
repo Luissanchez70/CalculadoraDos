@@ -11,12 +11,14 @@ import UIKit
 class CalculatorViewModel {
     // MARK: Variables
     private var pulsations: [CalculatorKeys] = []
+    private var errorMsg: String?
     // MARK: - Public Functions
     func click(text: String) {
         guard let character = CalculatorKeys(tag: text) else { return }
         switch character {
         case CalculatorKeys.clear:
             pulsations.removeAll()
+            errorMsg = nil
         case CalculatorKeys.equals:
             sendOperations()
         default:
@@ -24,7 +26,10 @@ class CalculatorViewModel {
         }
     }
     func showOperations() -> String {
-        pulsations.map { $0.rawRepresentation } .joined()
+        guard let error = errorMsg else {
+            return pulsations.map { $0.rawRepresentation } .joined()
+        }
+        return error
     }
 }
 // MARK: - Private Functions
@@ -41,7 +46,14 @@ private extension CalculatorViewModel {
     func sendOperations() {
        if pulsations.count >= 3 {
            let instance = AdvancedDelegateOperation(arrOperation: pulsations)
-           pulsations = instance.calculate()
+           do {
+               pulsations = try instance.calculate()
+           } catch DivisionCase.DivisionCaseError.divisionByZero {
+               let error = DivisionCase.DivisionCaseError.divisionByZero
+               errorMsg = error.rawValue
+           } catch {
+               errorMsg = "Error: unknown"
+           }
         }
     }
 }

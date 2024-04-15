@@ -16,3 +16,11 @@ class DivisionCase {
         return num1 / num2
     }
 }
+extension DivisionCase.DivisionCaseError {
+    var rawValue: String {
+        switch self {
+        case .divisionByZero:
+            return "Error: Cannot divide by zero"
+        }
+    }
+}

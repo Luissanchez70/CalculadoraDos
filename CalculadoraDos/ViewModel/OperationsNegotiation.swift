@@ -9,12 +9,12 @@ import Foundation
 
 class OperationsNegotiation {
     init() {}
-    func division(_ num1: Double, _ num2: Double) -> CalculatorKeys {
+    func division(_ num1: Double, _ num2: Double) throws -> CalculatorKeys? {
         do {
             let aux = try DivisionCase().execute(num1: num1, num2: num2)
             return .number(aux)
-        } catch {
-            return .number(0)
+        } catch DivisionCase.DivisionCaseError.divisionByZero {
+            throw DivisionCase.DivisionCaseError.divisionByZero
         }
     }
     func multiplication(_ num1: Double, _ num2: Double) -> CalculatorKeys {

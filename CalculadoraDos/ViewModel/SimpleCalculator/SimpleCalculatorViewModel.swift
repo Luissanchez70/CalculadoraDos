@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class SimpleCalculatorViewModel {
-    // MARK: Variables
+    // MARK: Variables and Contructor
     private var number1: CalculatorKeys?
     private var number2: CalculatorKeys?
     private var sing: CalculatorKeys?
     private var simpleCalculator: SimpleDelegateOperation?
+    private var errorMsg: String?
     // MARK: - Public Functions
     func click(text: String) {
         let key = CalculatorKeys(tag: text)
@@ -26,6 +27,7 @@ class SimpleCalculatorViewModel {
             }
         case .clear:
             resetVariables()
+            errorMsg = nil
             number1 = nil
         case .equals:
             manageData()
@@ -37,18 +39,21 @@ class SimpleCalculatorViewModel {
         }
     }
     func showOperations() -> String {
-        if number1 == nil || sing == nil {
-            guard let aux = number1?.rawRepresentation else { return "" }
-            return aux
-        } else {
-            guard let num1 = number1?.rawRepresentation else { return "" }
-            guard let aux = number2?.rawRepresentation else { return "\(num1)" }
-            return aux
+        guard let error = errorMsg else {
+            if number1 == nil || sing == nil {
+                guard let aux = number1?.rawRepresentation else { return "" }
+                return aux
+            } else {
+                guard let num1 = number1?.rawRepresentation else { return "" }
+                guard let aux = number2?.rawRepresentation else { return "\(num1)" }
+                return aux
+            }
         }
+        return error
     }
 }
 // MARK: - Private Functions
-extension SimpleCalculatorViewModel {
+private extension SimpleCalculatorViewModel {
     func manageData() {
         guard let singAux = sing, let number1Aux = number1, let number2Aux = number2 else { return }
         simpleCalculator = SimpleDelegateOperation(sing: singAux, numer1: number1Aux, number2: number2Aux)
@@ -56,8 +61,15 @@ extension SimpleCalculatorViewModel {
     }
     func resetVariables() {
         sing = nil
-        number1 = simpleCalculator?.calulate()
         number2 = nil
+        do {
+            number1 = try simpleCalculator?.calulate()
+        } catch DivisionCase.DivisionCaseError.divisionByZero {
+            let error = DivisionCase.DivisionCaseError.divisionByZero
+            errorMsg = error.rawValue
+        } catch {
+            errorMsg = "Error: unknown"
+        }
     }
     func returnNumber(_ newDouble: Double, _ number: inout CalculatorKeys?) {
         if number == nil {

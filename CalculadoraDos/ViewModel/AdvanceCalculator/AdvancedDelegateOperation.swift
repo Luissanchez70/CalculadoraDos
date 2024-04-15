@@ -19,12 +19,13 @@ class AdvancedDelegateOperation {
         self .arrOperation = arrOperation
     }
     // MARK: - Public Functions
-    func calculate() -> [CalculatorKeys] {
+    func calculate() throws -> [CalculatorKeys] {
         for operation in operators {
             var indexOpt = arrOperation.firstIndex(of: operation)
             while let index = indexOpt {
                 guard arrOperation.count > 2 else { return arrOperation }
-                arrOperation[index] = calculate(index)
+                guard let aux = try calculate(index) else { throw DivisionCase.DivisionCaseError.divisionByZero }
+                arrOperation[index] = aux
                 let beforeIndex = index - 1
                 let afterIndex = index + 1
                 if (0..<arrOperation.count).contains(afterIndex) {
@@ -41,7 +42,7 @@ class AdvancedDelegateOperation {
 }
 // MARK: - Private Functions
 private extension AdvancedDelegateOperation {
-    func calculate(_ index: Int) -> CalculatorKeys {
+    func calculate(_ index: Int) throws -> CalculatorKeys? {
         let beforeIndex = arrOperation.index(before: index)
         let afterIndext = arrOperation.index(after: index)
         if afterIndext < arrOperation.count && beforeIndex >= 0 {
@@ -49,7 +50,11 @@ private extension AdvancedDelegateOperation {
                   let num2 = arrOperation[afterIndext].extractDoublevalue else { return arrOperation[index] }
             switch arrOperation[index] {
             case .division:
-                return OperationsNegotiation().division(num1, num2)
+                do {
+                    return try OperationsNegotiation().division(num1, num2)
+                } catch DivisionCase.DivisionCaseError.divisionByZero {
+                    throw DivisionCase.DivisionCaseError.divisionByZero
+                }
             case .multiplication:
                 return OperationsNegotiation().multiplication(num1, num2)
             case .subtraction:

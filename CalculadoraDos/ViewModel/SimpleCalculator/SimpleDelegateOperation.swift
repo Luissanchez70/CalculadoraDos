@@ -19,12 +19,16 @@ class SimpleDelegateOperation {
         self.number2 = number2
     }
     // MARK: - Public Functions
-    func calulate() -> CalculatorKeys? {
+    func calulate() throws -> CalculatorKeys? {
         if let num1 = numer1.extractDoublevalue,
            let num2 = number2.extractDoublevalue {
             switch sing {
             case CalculatorKeys.division:
-                return OperationsNegotiation().division(num1, num2)
+                do {
+                    return try OperationsNegotiation().division(num1, num2)
+                } catch DivisionCase.DivisionCaseError.divisionByZero {
+                    throw DivisionCase.DivisionCaseError.divisionByZero
+                }
             case CalculatorKeys.multiplication:
                 return OperationsNegotiation().multiplication(num1, num2)
             case CalculatorKeys.subtraction:
