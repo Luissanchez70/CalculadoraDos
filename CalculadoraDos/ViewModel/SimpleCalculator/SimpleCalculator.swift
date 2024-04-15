@@ -10,9 +10,9 @@ import UIKit
 
 class SimpleCalculator {
     // MARK: Variables and constructor
-    var sing: CalculatorKeys
-    var numer1: CalculatorKeys
-    var number2: CalculatorKeys
+    private var sing: CalculatorKeys
+    private var numer1: CalculatorKeys
+    private var number2: CalculatorKeys
     init(sing: CalculatorKeys, numer1: CalculatorKeys, number2: CalculatorKeys) {
         self.sing = sing
         self.numer1 = numer1

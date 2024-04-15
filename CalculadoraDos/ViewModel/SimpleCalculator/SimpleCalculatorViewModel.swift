@@ -10,10 +10,10 @@ import UIKit
 
 class SimpleCalculatorViewModel {
     // MARK: Variables
-    var number1: CalculatorKeys?
-    var number2: CalculatorKeys?
-    var sing: CalculatorKeys?
-    var simpleCalculator: SimpleCalculator?
+    private var number1: CalculatorKeys?
+    private var number2: CalculatorKeys?
+    private var sing: CalculatorKeys?
+    private var simpleCalculator: SimpleCalculator?
     // MARK: - Public Functions
     func click(text: String) {
         let key = CalculatorKeys(tag: text)
