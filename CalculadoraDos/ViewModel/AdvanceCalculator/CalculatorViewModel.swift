@@ -48,11 +48,8 @@ private extension CalculatorViewModel {
            let instance = AdvancedDelegateOperation(arrOperation: pulsations)
            do {
                pulsations = try instance.calculate()
-           } catch DivisionCase.DivisionCaseError.divisionByZero {
-               let error = DivisionCase.DivisionCaseError.divisionByZero
-               errorMsg = error.rawValue
-           } catch {
-               errorMsg = "Error: unknown"
+           } catch let error {
+               errorMsg =  error.localizedDescription
            }
         }
     }

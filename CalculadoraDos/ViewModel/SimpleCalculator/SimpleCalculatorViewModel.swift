@@ -13,7 +13,6 @@ class SimpleCalculatorViewModel {
     private var number1: CalculatorKeys?
     private var number2: CalculatorKeys?
     private var sing: CalculatorKeys?
-    private var simpleCalculator: SimpleDelegateOperation?
     private var errorMsg: String?
     // MARK: - Public Functions
     func click(text: String) {
@@ -56,20 +55,16 @@ class SimpleCalculatorViewModel {
 private extension SimpleCalculatorViewModel {
     func manageData() {
         guard let singAux = sing, let number1Aux = number1, let number2Aux = number2 else { return }
-        simpleCalculator = SimpleDelegateOperation(sing: singAux, numer1: number1Aux, number2: number2Aux)
+        do {
+            number1 = try OperationsNegotiation().calulate(sing: singAux, number1: number1Aux, number2: number2Aux)
+         } catch let error {
+             errorMsg =  error.localizedDescription
+         }
         resetVariables()
     }
     func resetVariables() {
         sing = nil
         number2 = nil
-        do {
-            number1 = try simpleCalculator?.calulate()
-        } catch DivisionCase.DivisionCaseError.divisionByZero {
-            let error = DivisionCase.DivisionCaseError.divisionByZero
-            errorMsg = error.rawValue
-        } catch {
-            errorMsg = "Error: unknown"
-        }
     }
     func returnNumber(_ newDouble: Double, _ number: inout CalculatorKeys?) {
         if number == nil {

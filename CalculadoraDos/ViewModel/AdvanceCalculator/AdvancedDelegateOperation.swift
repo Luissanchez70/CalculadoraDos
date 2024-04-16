@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AdvancedDelegateOperation {
+class AdvancedDelegateOperation: OperationsNegotiation {
     // MARK: - Variables and constructor
     private var arrOperation: [CalculatorKeys]
     private let operators: [CalculatorKeys] = [CalculatorKeys.dot,
@@ -24,7 +24,7 @@ class AdvancedDelegateOperation {
             var indexOpt = arrOperation.firstIndex(of: operation)
             while let index = indexOpt {
                 guard arrOperation.count > 2 else { return arrOperation }
-                guard let aux = try calculate(index) else { throw DivisionCase.DivisionCaseError.divisionByZero }
+                guard let aux = try sendKeys(index) else { throw DivisionCase.DivisionCaseError.divisionByZero }
                 arrOperation[index] = aux
                 let beforeIndex = index - 1
                 let afterIndex = index + 1
@@ -42,30 +42,13 @@ class AdvancedDelegateOperation {
 }
 // MARK: - Private Functions
 private extension AdvancedDelegateOperation {
-    func calculate(_ index: Int) throws -> CalculatorKeys? {
-        let beforeIndex = arrOperation.index(before: index)
-        let afterIndext = arrOperation.index(after: index)
-        if afterIndext < arrOperation.count && beforeIndex >= 0 {
-            guard let num1 = arrOperation[beforeIndex].extractDoublevalue,
-                  let num2 = arrOperation[afterIndext].extractDoublevalue else { return arrOperation[index] }
-            switch arrOperation[index] {
-            case .division:
-                do {
-                    return try OperationsNegotiation().division(num1, num2)
-                } catch DivisionCase.DivisionCaseError.divisionByZero {
-                    throw DivisionCase.DivisionCaseError.divisionByZero
-                }
-            case .multiplication:
-                return OperationsNegotiation().multiplication(num1, num2)
-            case .subtraction:
-                return OperationsNegotiation().subtraction(num1, num2)
-            case .dot:
-                return OperationsNegotiation().dot(num1, num2)
-            default:
-                return OperationsNegotiation().addition(num1, num2)
-            }
-        } else {
-            return arrOperation[index]
+    func sendKeys(_ index: Int) throws -> CalculatorKeys? {
+        if (index+1) < arrOperation.count && (index-1) >= 0 {
+            let num1 = arrOperation[index-1]
+            let num2 = arrOperation[index+1]
+            let sing = arrOperation[index]
+            return try calulate(sing: sing, number1: num1, number2: num2)
         }
+        return nil
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 class DivisionCase {
-    enum DivisionCaseError: Error {
+    enum DivisionCaseError: LocalizedError {
         case divisionByZero
     }
     func execute(num1: Double, num2: Double) throws -> Double {
@@ -17,7 +17,7 @@ class DivisionCase {
     }
 }
 extension DivisionCase.DivisionCaseError {
-    var rawValue: String {
+    var errorDescription: String? {
         switch self {
         case .divisionByZero:
             return "Error: Cannot divide by zero"

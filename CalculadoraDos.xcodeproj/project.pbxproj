@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D2242CFA2BC9314C00AFF9D2 /* SimpleDelegateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2242CF92BC9314C00AFF9D2 /* SimpleDelegateOperation.swift */; };
 		D2242CFC2BC93C8800AFF9D2 /* SimpleCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2242CFB2BC93C8800AFF9D2 /* SimpleCalculatorViewModel.swift */; };
 		D22ADD092BBD58CE00506EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADD082BBD58CE00506EA2 /* AppDelegate.swift */; };
 		D22ADD0B2BBD58CE00506EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADD0A2BBD58CE00506EA2 /* SceneDelegate.swift */; };
@@ -32,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D2242CF92BC9314C00AFF9D2 /* SimpleDelegateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDelegateOperation.swift; sourceTree = "<group>"; };
 		D2242CFB2BC93C8800AFF9D2 /* SimpleCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalculatorViewModel.swift; sourceTree = "<group>"; };
 		D22ADD052BBD58CE00506EA2 /* CalculadoraDos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculadoraDos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22ADD082BBD58CE00506EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 		D2242CFE2BC9436600AFF9D2 /* SimpleCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				D2242CF92BC9314C00AFF9D2 /* SimpleDelegateOperation.swift */,
 				D2242CFB2BC93C8800AFF9D2 /* SimpleCalculatorViewModel.swift */,
 			);
 			path = SimpleCalculator;
@@ -273,7 +270,6 @@
 			files = (
 				D2870CFF2BC422990043D36E /* RowKeyBoard.swift in Sources */,
 				D22ADD0D2BBD58CE00506EA2 /* ViewController.swift in Sources */,
-				D2242CFA2BC9314C00AFF9D2 /* SimpleDelegateOperation.swift in Sources */,
 				D22ADD092BBD58CE00506EA2 /* AppDelegate.swift in Sources */,
 				D2870D012BC426900043D36E /* DelegateAction.swift in Sources */,
 				D2AD3F1E2BBEDE6D009738DA /* StoryBoardController.swift in Sources */,
