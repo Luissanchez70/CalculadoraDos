@@ -64,6 +64,18 @@ extension CalculatorKeys {
         default: return nil
         }
     }
+    var rawRepresentation: String {
+        switch self {
+        case .number(let number):
+            if number == Double(Int(number)) {
+                return "\(Int(number))"
+            } else {
+                return "\(number)"
+            }
+        case .dot: return "\(raw)"
+        default: return " \(raw) "
+        }
+    }
 }
 
 extension CalculatorKeys: Equatable { }

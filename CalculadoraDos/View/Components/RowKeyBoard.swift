@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 class RowKeyBoard {
-    let operations = [CalculatorKeys.division,
+    // MARK: Variables and constructor
+    private let operations = [CalculatorKeys.division,
                       CalculatorKeys.multiplication,
                       CalculatorKeys.addition,
                       CalculatorKeys.dot,
@@ -17,12 +18,13 @@ class RowKeyBoard {
                       CalculatorKeys.clear,
                       CalculatorKeys.equals
     ]
-    let customStackVertical: CustomStackVertical
-    let delegateAction: DelegateAction
+    private let customStackVertical: CustomStackVertical
+    private let delegateAction: DelegateAction
     init(customStackVertical: CustomStackVertical, delegateAction: DelegateAction) {
         self.customStackVertical = customStackVertical
         self.delegateAction = delegateAction
     }
+    // MARK: - Public Functions
      func configure() {
         var itemPerRow = 0
         var positionOperation = 0
@@ -49,7 +51,10 @@ class RowKeyBoard {
         }
          customStackVertical.addArrangedSubview(rowStackView)
     }
-    private func addRowToStack(_ itemPerRow: inout Int, _ rowStackView: inout ContentKeyBoard) {
+}
+// MARK: - Private Functions
+private extension RowKeyBoard {
+    func addRowToStack(_ itemPerRow: inout Int, _ rowStackView: inout ContentKeyBoard) {
         if itemPerRow == 4 {
             customStackVertical.addArrangedSubview(rowStackView)
             rowStackView = ContentKeyBoard()

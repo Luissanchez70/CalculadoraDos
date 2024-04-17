@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
-    private let buttonController = ButtonController()
+    private let buttonController = CalculatorViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,21 +30,13 @@ class ViewController: UIViewController {
         ])
     }
 }
-
 extension ViewController: DelegateAction {
     func addActionButton(button: UIButton) {
         button.addTarget(self, action: #selector(onClick), for: .touchUpInside)
     }
     @objc func onClick(_ button: Key) {
-        guard let character = CalculatorKeys(tag: (button.titleLabel?.text)!) else { return }
-        switch character {
-        case CalculatorKeys.clear:
-            buttonController.pulsations.removeAll()
-        case CalculatorKeys.equals:
-            buttonController.sendOperations()
-        default:
-            buttonController.addCharacter(character: character)
-        }
+        guard let text = button.titleLabel?.text else { return }
+        buttonController.click(text: text)
         label.text = buttonController.showOperations()
     }
 }
