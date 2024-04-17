@@ -26,6 +26,8 @@ class OperationsNegotiation {
         }
         return nil
     }
+}
+extension OperationsNegotiation: OperationsStructure {
     func division(_ num1: Double, _ num2: Double) throws -> CalculatorKeys? {
         let aux = try DivisionCase().execute(num1: num1, num2: num2)
         return .number(aux)
